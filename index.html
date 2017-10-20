@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Hispanics in the United States</title>
+
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/main.css">
+<link href="https://fonts.googleapis.com/css?family=Cantarell|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="styles/twocharts.css">
+
+
+  <!-- add the Highcharts script elements here -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+
+
+
+</head>
+
+<body>
+<header>
+  <h1>Hispanics in the United States</h1>
+<p> by: Clara Garcia </p>
+</header>
+
+<article>
+<section>
+<p>
+  The Hispanic/Latino population in the United States, although often seen and treated as a monolith, is a very diverse group of people. By 2014, there were over 55 million people who identified as Latino or Hispanic, accounting for almost 18% of the country's population. Hispanics are currently the largest minority in the US, and the fastest growing group. The state with the largest Hispanic population is California, followed by Texas and Florida.
+</p>
+<p>
+ Most people who identify as Hispanic or Latino were born in the United States. Only about a third are foreign-born; nevertheless, the amount is still significant compared to Non-Hispanics. </p>
+ <p>
+  The large majority of Hispanics are of Mexican origin, but there's also an important amount of Puerto Ricans, Cubans, Central and South Americans.
+</p>
+
+<p>Sources:
+
+<a href="https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk">US Census</a>, <a href="http://www.pewresearch.org/fact-tank/2016/09/08/key-facts-about-how-the-u-s-hispanic-population-is-changing/">Pew Research Center</a>
+
+ </p>
+ </section>
+
+
+<div id="pie1"></div>
+
+<div id="pie2"></div>
+
+
+
+<p>
+From: <i><a href="https://www.census.gov/data/tables/2014/demo/hispanic-origin/2014-cps.html">Nativity and Citizenship Status by Sex, Hispanic Origin, and Race: 2014  (Table 7)</a></i>
+</p>
+
+
+
+
+
+
+<div id="container2"></div>
+
+
+<p>
+From: <i><a href="https://www.census.gov/data/tables/2014/demo/hispanic-origin/2014-cps.html"> Hispanic Origin Type Distribution of the Hispanic Population by Sex and Generation: 2014 (Table 26)</a></i>
+</p>
+
+</article>
+
+<!-- only scripts below -->
+<script>
+
+Highcharts.chart('pie1', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Born in the USA: Hispanics, 2014'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Hispanics',
+        colorByPoint: true,
+        data: [{
+            name: 'Native',
+            y: 66,
+        }, {
+            name: 'Foreign Born',
+            y: 34,
+        }]
+    }]
+});
+
+
+
+</script>
+
+
+<script>
+
+
+
+    // Build the chart
+    Highcharts.chart('pie2', {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: 'Born in the USA: Non-Hispanics, 2014'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: false
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            name: 'Non Hispanics',
+            colorByPoint: true,
+            data: [{
+                name: 'Native',
+                y: 91,
+            }, {
+                name: 'Foreign Born',
+                y: 9,
+            }]
+        }]
+    });
+
+
+
+</script>
+
+
+<script>
+// Create the chart
+Highcharts.chart('container2', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Origin of Hispanic Population, 2014'
+    },
+    subtitle: {
+        text: 'Source: <a href="https://www.census.gov/data/tables/2014/demo/hispanic-origin/2014-cps.html">US Census</a>'
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'Total percent of Hispanic population'
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:.1f}%'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    series: [{
+        name: 'Origins',
+        colorByPoint: true,
+        data: [{
+            name: 'Mexican',
+            y: 64.1,
+            drilldown: 'Mexican'
+        }, {
+            name: 'Puerto Rican',
+            y: 9.3,
+            drilldown: 'Puerto Rican'
+        },  {
+            name: 'Central American',
+            y: 9.0,
+            drilldown: 'Central American'
+        }, {
+            name: 'Other Hispanic',
+            y: 8.7,
+            drilldown: 'South American'
+        }, {
+            name: 'South American',
+            y: 5.3,
+            drilldown: 'South American'
+        }, {
+            name: 'Cuban',
+            y: 3.7,
+            drilldown: 'Cuban'
+        }]
+    }],
+});
+
+</script>
+
+
+
+</body>
+</html>
